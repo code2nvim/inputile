@@ -1,0 +1,34 @@
+{
+  "tasks": {
+    "dev:vite": "deno run -A --node-modules-dir npm:vite",
+    "dev:runtime": "deno desktop -A --hmr main.ts",
+    "dev": {
+      "dependencies": ["dev:vite", "dev:runtime"]
+    },
+    "build:vite": "deno run -A --node-modules-dir npm:vite build",
+    "build": {
+      "command": "deno desktop -A --include=dist/ main.ts",
+      "dependencies": ["build:vite"]
+    }
+  },
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "jsxImportSourceTypes": "@types/react"
+  },
+  "imports": {
+    "@deno/vite-plugin": "npm:@deno/vite-plugin@^2.0.2",
+    "@std/http": "jsr:@std/http@^1.1.4",
+    "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.3.3",
+    "@types/react": "npm:@types/react@^19.2.18",
+    "@types/react-dom": "npm:@types/react-dom@^19.2.7",
+    "@vitejs/plugin-react": "npm:@vitejs/plugin-react@^6.1.1",
+    "prettier": "npm:prettier@^3.9.9",
+    "prettier-plugin-tailwindcss": "npm:prettier-plugin-tailwindcss@^0.8.1",
+    "react": "npm:react@^19.2.8",
+    "react-dom": "npm:react-dom@^19.2.8",
+    "tailwindcss": "npm:tailwindcss@^4.3.3",
+    "vite": "npm:vite@^8.2.2"
+  }
+}
