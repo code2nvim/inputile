@@ -1,14 +1,10 @@
 {
   "tasks": {
-    "dev:vite": "deno run -A --node-modules-dir npm:vite",
-    "dev:runtime": "deno desktop -A --hmr main.ts",
-    "dev": {
-      "dependencies": ["dev:vite", "dev:runtime"]
-    },
-    "build:vite": "deno run -A --node-modules-dir npm:vite build",
-    "build": {
+    "dev": "deno desktop -A --hmr main.ts",
+    "build": "deno run -A --node-modules-dir npm:vite build",
+    "desktop": {
       "command": "deno desktop -A --include=dist/ main.ts",
-      "dependencies": ["build:vite"]
+      "dependencies": ["build"]
     }
   },
   "compilerOptions": {
@@ -19,6 +15,7 @@
   },
   "imports": {
     "@deno/vite-plugin": "npm:@deno/vite-plugin@^2.0.2",
+    "@std/fs": "jsr:@std/fs@^1.0.24",
     "@std/http": "jsr:@std/http@^1.1.4",
     "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.3.3",
     "@types/react": "npm:@types/react@^19.2.18",
