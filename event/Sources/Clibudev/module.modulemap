@@ -1,0 +1,4 @@
+module Clibudev [system] {
+  header "libudev.h"
+  export *
+}
