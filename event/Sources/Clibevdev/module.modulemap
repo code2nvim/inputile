@@ -1,0 +1,4 @@
+module Clibevdev [system] {
+  header "libevdev.h"
+  export *
+}

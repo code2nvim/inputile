@@ -1,6 +1,6 @@
 import { existsSync } from "@std/fs";
 
-function findScreen() {
+function readScreen() {
   const cards = Array.from(Deno.readDirSync("/sys/class/drm"))
     .map((entry) => entry.name)
     .filter((name) => name.startsWith("card"));
@@ -18,6 +18,6 @@ function findScreen() {
     .pop()!;
 }
 
-const screen = findScreen();
+const screen = readScreen();
 
 export { screen };

@@ -1,0 +1,4 @@
+module Clibinput [system] {
+  header "libinput.h"
+  export *
+}
