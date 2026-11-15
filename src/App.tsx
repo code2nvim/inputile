@@ -1,21 +1,17 @@
 import { useState } from "react";
+import { Input } from "./Input.tsx";
+import { PageOptions, usePageValue } from "./Page.tsx";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const page = usePageValue();
 
   return (
     <div className="absolute inset-0 grid">
-      <main className="flex items-center justify-center">
-        <button
-          type="button"
-          className="size-24 rounded-full bg-black text-white"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          {count}
-        </button>
-      </main>
-      <footer className="absolute bottom-0 flex w-full justify-end bg-linear-to-b to-black">
-        <nav className="px-4 py-2">
+      {page === "Index" && <Index />}
+      {page === "Input" && <Input />}
+      <footer className="absolute bottom-0 flex w-full justify-between bg-linear-to-b to-black p-2">
+        <PageOptions />
+        <nav className="px-2">
           <button
             type="button"
             className="text-white"
@@ -26,6 +22,25 @@ function App() {
         </nav>
       </footer>
     </div>
+  );
+}
+
+function Index() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <main className="flex items-center justify-center">
+      <button
+        type="button"
+        className="size-24 rounded-full bg-black text-white"
+        onClick={() => {
+          bindings.reset();
+          setCount((count) => count + 1);
+        }}
+      >
+        {count}
+      </button>
+    </main>
   );
 }
 

@@ -1,3 +1,5 @@
 dist/
 inputile/
 node_modules/
+
+event/.build/

@@ -9,6 +9,7 @@
   },
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
+    "types": ["./bindings.d.ts"],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "jsxImportSourceTypes": "@types/react"
@@ -17,10 +18,12 @@
     "@deno/vite-plugin": "npm:@deno/vite-plugin@^2.0.2",
     "@std/fs": "jsr:@std/fs@^1.0.24",
     "@std/http": "jsr:@std/http@^1.1.4",
+    "@std/streams": "jsr:@std/streams@^1.2.0",
     "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.3.3",
     "@types/react": "npm:@types/react@^19.2.18",
     "@types/react-dom": "npm:@types/react-dom@^19.2.7",
     "@vitejs/plugin-react": "npm:@vitejs/plugin-react@^6.1.1",
+    "jotai": "npm:jotai@^3.0.2",
     "prettier": "npm:prettier@^3.9.9",
     "prettier-plugin-tailwindcss": "npm:prettier-plugin-tailwindcss@^0.8.1",
     "react": "npm:react@^19.2.8",

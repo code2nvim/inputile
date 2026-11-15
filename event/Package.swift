@@ -4,6 +4,9 @@ import PackageDescription
 
 let package = Package(
     name: "InputTileEvent",
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-nio", from: "2.0.0")
+    ],
     targets: [
         .systemLibrary(
             name: "Clibudev",
@@ -24,7 +27,11 @@ let package = Package(
         ),
         .executableTarget(
             name: "inputilevent",
-            dependencies: ["Input"],
+            dependencies: [
+                .product(name: "NIOCore", package: "swift-nio"),
+                .product(name: "NIOPosix", package: "swift-nio"),
+                "Input",
+            ],
             swiftSettings: [.interoperabilityMode(.Cxx)],
         ),
         .testTarget(
