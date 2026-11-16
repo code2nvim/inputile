@@ -9,17 +9,10 @@ function App() {
     <div className="absolute inset-0 grid">
       {page === "Index" && <Index />}
       {page === "Input" && <Input />}
-      <footer className="absolute bottom-0 flex w-full justify-between bg-linear-to-b to-black p-2">
-        <PageOptions />
-        <nav className="px-2">
-          <button
-            type="button"
-            className="text-white"
-            onClick={() => bindings.reset()}
-          >
-            Reset
-          </button>
-        </nav>
+      <footer className="absolute bottom-0 w-full text-transparent hover:text-white">
+        <div className="bg-linear-to-b to-black">
+          <PageOptions />
+        </div>
       </footer>
     </div>
   );
@@ -34,7 +27,6 @@ function Index() {
         type="button"
         className="size-24 rounded-full bg-black text-white"
         onClick={() => {
-          bindings.reset();
           setCount((count) => count + 1);
         }}
       >

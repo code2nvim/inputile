@@ -16,14 +16,18 @@ const window = new Deno.BrowserWindow({
 window.bind("reset", async () => {
   window.hide();
   window.setSize(screen.width / 2, screen.height / 2);
+  window.setResizable(false);
   window.show();
 });
 
-// deno-lint-ignore require-await
 window.bind("resize", async () => {
-  window.hide();
-  window.setSize(screen.width / 1.2, screen.height / 8);
-  window.show();
+  const action = async () => {
+    window.setSize(screen.width / 2.75, screen.height / 8);
+    await new Promise((_) => setTimeout(_, 50));
+    window.setResizable(true);
+  };
+  /* TODO: failed (1 time) */ await action();
+  await action();
 });
 
 // deno-lint-ignore require-await

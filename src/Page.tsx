@@ -10,17 +10,7 @@ export function PageOptions() {
   const [page, setPage] = useAtom(pageAtom);
 
   return (
-    <nav className="flex gap-2 px-2 text-white">
-      <button
-        type="button"
-        className={`${page}`}
-        onClick={() => {
-          bindings.reset();
-          setPage("Index");
-        }}
-      >
-        Index
-      </button>
+    <nav className="flex w-full justify-between gap-4 p-4 text-2xl">
       <button
         type="button"
         className={`${page}`}
@@ -29,7 +19,17 @@ export function PageOptions() {
           setPage("Input");
         }}
       >
-        Input
+        ⌨️
+      </button>
+      <button
+        type="button"
+        className={`${page}`}
+        onClick={() => {
+          bindings.reset();
+          setPage("Index");
+        }}
+      >
+        🏠
       </button>
     </nav>
   );
