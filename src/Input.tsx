@@ -1,5 +1,6 @@
 import { atom, useAtom, useAtomValue } from "jotai";
 import { Keyboard, KeyboardInput } from "./input/Keyboard.tsx";
+import { Mouse, MouseInput } from "./input/Mouse.tsx";
 
 const inputAtom = atom([] as InputTileEvent[]);
 const triggerAtom = atom(false, async (get, set, state) => {
@@ -18,7 +19,7 @@ export function Input() {
       <button
         type="button"
         className={`flex size-full items-center justify-center text-white ${
-          trigger ? "z-50" : ""
+          trigger && "z-50"
         }`}
         onClick={() => setTrigger(!trigger)}
       >
@@ -31,13 +32,18 @@ export function Input() {
 }
 
 function InputTile({ input }: { input: InputTileEvent[] }) {
-  const keyEvents = input
+  const keyboardEvents = input
     .filter((event) => event.type === "key")
     .map((event) => event.data as KeyboardInput);
 
+  const mouseEvents = input
+    .filter((event) => event.type === "btn")
+    .map((event) => event.data as MouseInput);
+
   return (
-    <div className="flex h-full max-h-full w-full flex-row items-center justify-start p-2">
-      <Keyboard input={keyEvents} />
+    <div className="flex h-full w-full flex-row items-center justify-between p-2">
+      <Keyboard input={keyboardEvents} />
+      <Mouse input={mouseEvents} />
     </div>
   );
 }
